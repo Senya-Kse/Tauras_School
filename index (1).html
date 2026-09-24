@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Частная школа «Таурас» — Информационный Портал</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;800&family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Montserrat', 'sans-serif'],
+                        serif: ['Cinzel', 'serif'],
+                    },
+                    colors: {
+                        schoolBlue: '#0c356a',
+                        schoolGold: '#d5b432',
+                        schoolRed: '#d61c22',
+                        schoolDarkBlue: '#051f3e',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .gold-border {
+            border-image: linear-gradient(to right, #d5b432, #f5e082, #d5b432) 1;
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, #051f3e 0%, #0c356a 50%, #174d8f 100%);
+        }
+        .text-gold-gradient {
+            background: linear-gradient(to right, #ffe17d, #d5b432, #f3d45f);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 flex flex-col min-h-screen">
+
+    <!-- НАВИГАЦИЯ -->
+    <nav class="bg-schoolDarkBlue border-b border-schoolGold/30 sticky top-0 z-50 shadow-lg text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center gap-3">
+                        <!-- Герб школы как логотип -->
+                        <img src="logo.jpg" alt="Герб" onerror="this.src='https://placehold.co/100x100?text=Герб'" class="w-12 h-12 rounded-lg border border-schoolGold object-contain bg-white p-0.5">
+                        <div>
+                            <span class="font-bold text-lg tracking-tight block leading-tight text-white uppercase font-serif">ТАУРАС</span>
+                            <span class="text-xs text-schoolGold font-medium">Частная школа • Санкт-Петербург</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Десктопное меню -->
+                <div class="hidden lg:flex space-x-1 items-center">
+                    <a href="#schedule" class="px-3.5 py-2 rounded-lg text-sm font-medium text-slate-200 hover:text-schoolGold hover:bg-white/5 transition-all duration-200">Расписание</a>
+                    <a href="#services" class="px-3.5 py-2 rounded-lg text-sm font-medium text-slate-200 hover:text-schoolGold hover:bg-white/5 transition-all duration-200">Доп. образование</a>
+                    <a href="#administration" class="px-3.5 py-2 rounded-lg text-sm font-medium text-slate-200 hover:text-schoolGold hover:bg-white/5 transition-all duration-200">Администрация</a>
+                    <a href="#events" class="px-3.5 py-2 rounded-lg text-sm font-medium text-slate-200 hover:text-schoolGold hover:bg-white/5 transition-all duration-200">Мероприятия</a>
+                    <a href="#feedback" class="ml-4 px-4 py-2 bg-schoolRed hover:bg-red-700 text-white border border-schoolGold/40 rounded-lg text-sm font-semibold transition-all duration-200 shadow-md hover:shadow-red-500/10">Обратная связь</a>
+                </div>
+                <!-- Кнопка мобильного меню -->
+                <div class="flex items-center lg:hidden">
+                    <button id="mobile-menu-button" type="button" class="inline-flex items-center justify-center p-2 rounded-lg text-slate-300 hover:text-schoolGold hover:bg-white/5 transition-colors">
+                        <i class="fa-solid fa-bars text-xl" id="menu-icon"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Мобильное меню -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-schoolDarkBlue border-t border-schoolGold/20 px-4 pt-2 pb-4 space-y-1 shadow-inner">
+            <a href="#schedule" class="block px-4 py-2 rounded-lg text-base font-medium text-slate-200 hover:text-schoolGold hover:bg-white/5">Расписание уроков</a>
+            <a href="#services" class="block px-4 py-2 rounded-lg text-base font-medium text-slate-200 hover:text-schoolGold hover:bg-white/5">Доп. образование</a>
+            <a href="#administration" class="block px-4 py-2 rounded-lg text-base font-medium text-slate-200 hover:text-schoolGold hover:bg-white/5">Администрация</a>
+            <a href="#events" class="block px-4 py-2 rounded-lg text-base font-medium text-slate-200 hover:text-schoolGold hover:bg-white/5">Мероприятия</a>
+            <a href="#feedback" class="block px-4 py-2.5 bg-schoolRed text-white rounded-lg text-base font-semibold text-center hover:bg-red-700">Обратная связь</a>
+        </div>
+    </nav>
+
+    <!-- ГЛАВНЫЙ БАННЕР -->
+    <section class="relative hero-gradient text-white py-16 md:py-24 border-b-4 border-schoolGold overflow-hidden">
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(213,180,50,0.15),transparent)] pointer-events-none"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <!-- Описание -->
+                <div class="lg:col-span-7 space-y-6">
+                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-schoolGold/20 text-schoolGold border border-schoolGold/30">
+                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> Интерактивная среда
+                    </span>
+                    <h1 class="text-3xl md:text-5xl font-extrabold text-white tracking-tight leading-none font-serif uppercase">
+                        Добро пожаловать в частную школу <span class="text-text-gold-gradient block mt-2">«ТАУРАС»</span>
+                    </h1>
+                    <p class="text-base md:text-lg text-slate-200 font-light max-w-2xl leading-relaxed">
+                        Инновационный информационный портал нашей школы. Расписание по классам, запись на развивающие секции центра дополнительного образования «Созвездие Таурас», оперативная связь и афиша событий в одном месте.
+                    </p>
+                    <div class="flex flex-wrap gap-4 pt-2">
+                        <a href="#schedule" class="px-6 py-3 bg-schoolGold hover:bg-yellow-600 text-schoolDarkBlue rounded-xl font-bold shadow-lg hover:shadow-yellow-500/20 transition-all duration-200">
+                            <i class="fa-regular fa-calendar-days mr-2"></i>Смотреть расписание
+                        </a>
+                        <a href="#services" class="px-6 py-3 bg-white/10 hover:bg-white/15 border border-white/20 text-white rounded-xl font-semibold transition-all duration-200">
+                            <i class="fa-solid fa-shapes mr-2"></i>Центр «Созвездие»
+                        </a>
+                    </div>
+                </div>
+                <!-- Маскот -->
+                <div class="lg:col-span-5 flex justify-center">
+                    <div class="relative group">
+                        <div class="absolute inset-0 bg-schoolGold/10 rounded-3xl blur-2xl group-hover:bg-schoolGold/20 transition-all"></div>
+                        <div class="bg-white/5 border border-white/10 p-4 rounded-3xl backdrop-blur-md relative z-10 flex flex-col items-center">
+                            <img src="mascot.jpg" alt="Маскот Бык" onerror="this.src='https://placehold.co/400x600?text=Талисман+Бык'" class="w-64 md:w-72 rounded-2xl object-cover shadow-2xl border border-schoolGold/30 transition-transform duration-300 hover:scale-105">
+                            <div class="mt-4 text-center">
+                                <span class="text-xs uppercase text-schoolGold tracking-wider font-bold">Талисман школы «Таурас»</span>
+                                <h4 class="font-serif text-lg font-bold text-white mt-1">Мистер Таурас</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- БЛОК: РАСПИСАНИЕ УРОКОВ -->
+    <section id="schedule" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+        <div class="text-center max-w-3xl mx-auto mb-10">
+            <h2 class="text-3xl font-bold text-schoolDarkBlue tracking-tight mb-3 font-serif">Интерактивное расписание уроков</h2>
+            <p class="text-slate-600 text-sm">Выберите интересующий класс и день недели, чтобы моментально вывести актуальный список занятий и время проведения.</p>
+            <div class="w-24 h-1 bg-schoolGold mx-auto mt-4 rounded-full"></div>
+        </div>
+
+        <div class="bg-white rounded-2xl border border-slate-200/80 shadow-md overflow-hidden p-5 md:p-8">
+            <!-- Выбор класса -->
+            <div class="mb-6">
+                <span class="text-xs font-bold text-schoolDarkBlue uppercase tracking-wider block mb-3"><i class="fa-solid fa-circle-chevron-right text-schoolGold mr-2"></i>Шаг 1: Выберите класс</span>
+                <div class="flex flex-wrap gap-2 justify-start items-center bg-slate-50 p-3 rounded-xl border border-slate-100" id="class-buttons-container">
+                    <!-- Будет наполнено JS -->
+                </div>
+            </div>
+
+            <!-- Выбор дня недели -->
+            <div class="mb-8">
+                <span class="text-xs font-bold text-schoolDarkBlue uppercase tracking-wider block mb-3"><i class="fa-solid fa-circle-chevron-right text-schoolGold mr-2"></i>Шаг 2: Выберите день недели</span>
+                <div class="flex flex-wrap gap-2" id="day-buttons-container">
+                    <button onclick="switchDay('ПН')" id="day-ПН" class="day-btn px-4 py-2 rounded-lg text-xs font-bold uppercase transition-all duration-200 bg-schoolBlue text-white shadow-sm">Понедельник (ПН)</button>
+                    <button onclick="switchDay('ВТ')" id="day-ВТ" class="day-btn px-4 py-2 rounded-lg text-xs font-bold uppercase transition-all duration-200 bg-slate-100 text-slate-600 hover:bg-slate-200">Вторник (ВТ)</button>
+                    <button onclick="switchDay('СР')" id="day-СР" class="day-btn px-4 py-2 rounded-lg text-xs font-bold uppercase transition-all duration-200 bg-slate-100 text-slate-600 hover:bg-slate-200">Среда (СР)</button>
+                    <button onclick="switchDay('ЧТ')" id="day-ЧТ" class="day-btn px-4 py-2 rounded-lg text-xs font-bold uppercase transition-all duration-200 bg-slate-100 text-slate-600 hover:bg-slate-200">Четверг (ЧТ)</button>
+                    <button onclick="switchDay('ПТ')" id="day-ПТ" class="day-btn px-4 py-2 rounded-lg text-xs font-bold uppercase transition-all duration-200 bg-slate-100 text-slate-600 hover:bg-slate-200">Пятница (ПТ)</button>
+                </div>
+            </div>
+
+            <!-- Отображение самого расписания -->
+            <div class="bg-slate-50 rounded-2xl border border-slate-200 p-4 md:p-6 shadow-inner">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center border-b border-slate-200 pb-4 mb-4 gap-2">
+                    <div>
+                        <h4 class="font-serif text-lg font-bold text-schoolDarkBlue">
+                            Расписание для <span id="schedule-title-class" class="text-schoolRed font-extrabold">1 класса</span>
+                        </h4>
+                        <p class="text-xs text-slate-500 mt-0.5">Учебный день: <span id="schedule-title-day" class="font-semibold text-slate-700">Понедельник</span></p>
+                    </div>
+                    <div class="text-xs text-white bg-schoolGold font-bold px-3 py-1 rounded-md shadow-sm uppercase tracking-wider" id="schedule-status-badge">
+                        10 уроков / активностей
+                    </div>
+                </div>
+
+                <div class="overflow-x-auto">
+                    <table class="min-w-full divide-y divide-slate-200">
+                        <thead>
+                            <tr class="bg-schoolDarkBlue text-white">
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-bold uppercase tracking-wider rounded-l-lg">№ Урока</th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-bold uppercase tracking-wider">Время</th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-bold uppercase tracking-wider rounded-r-lg">Название предмета / Событие</th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white divide-y divide-slate-100" id="schedule-table-body">
+                            <!-- Заполняется JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- БЛОК: ДОПОЛНИТЕЛЬНЫЕ ОБРАЗОВАТЕЛЬНЫЕ УСЛУГИ -->
+    <section id="services" class="py-16 bg-slate-100 border-y border-slate-200/60 w-full">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="text-xs text-schoolRed font-bold uppercase tracking-wider bg-white border border-schoolRed/10 px-3 py-1 rounded-full">Центр «Созвездие Таурас»</span>
+                <h2 class="text-3xl font-bold text-schoolDarkBlue tracking-tight mt-3 mb-3 font-serif">Дополнительное образование детей и взрослых</h2>
+                <p class="text-slate-600 text-sm">Широкий спектр секций, кружков и индивидуальных занятий. Записывайтесь прямо сейчас через интерактивную форму ниже!</p>
+                <div class="w-24 h-1 bg-schoolGold mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <!-- Контейнер категорий и карточек доп. образования -->
+            <div class="space-y-12" id="services-categories-container">
+                <!-- Наполняется JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- БЛОК: АДМИНИСТРАЦИЯ ШКОЛЫ -->
+    <section id="administration" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+        <div class="text-center max-w-3xl mx-auto mb-12">
+            <h2 class="text-3xl font-bold text-schoolDarkBlue tracking-tight mb-3 font-serif">Администрация школы</h2>
+            <p class="text-slate-600 text-sm">Команда руководителей нашей школы всегда открыта к диалогу с родителями и учащимися.</p>
+            <div class="w-24 h-1 bg-schoolGold mx-auto mt-4 rounded-full"></div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- Директор -->
+            <div class="bg-white rounded-2xl border border-slate-200 shadow-md p-6 flex flex-col items-center text-center relative overflow-hidden transition-transform duration-300 hover:-translate-y-1">
+                <div class="absolute top-0 inset-x-0 h-2 bg-schoolGold"></div>
+                <div class="w-20 h-20 rounded-full bg-schoolBlue/10 border-2 border-schoolGold/40 flex items-center justify-center text-schoolBlue text-2xl font-bold mb-4 font-serif">
+                    ЛА
+                </div>
+                <span class="text-xs font-extrabold text-schoolRed uppercase tracking-wider bg-red-50 border border-red-200 px-2.5 py-0.5 rounded-full mb-2">Директор</span>
+                <h3 class="font-bold text-slate-900 leading-snug">Лобанов<br>Алексей Александрович</h3>
+                <div class="w-full border-t border-slate-100 pt-4 mt-4 space-y-2 text-xs text-slate-600">
+                    <a href="tel:+79119221045" class="flex items-center justify-center gap-1.5 hover:text-schoolRed transition-colors font-semibold">
+                        <i class="fa-solid fa-phone text-slate-400"></i>+7 (911) 922-10-45
+                    </a>
+                </div>
+            </div>
+
+            <!-- Завуч 5-11 -->
+            <div class="bg-white rounded-2xl border border-slate-200 shadow-md p-6 flex flex-col items-center text-center relative overflow-hidden transition-transform duration-300 hover:-translate-y-1">
+                <div class="absolute top-0 inset-x-0 h-2 bg-schoolBlue"></div>
+                <div class="w-20 h-20 rounded-full bg-schoolBlue/10 border-2 border-schoolBlue/40 flex items-center justify-center text-schoolBlue text-2xl font-bold mb-4 font-serif">
+                    НС
+                </div>
+                <span class="text-xs font-extrabold text-schoolBlue uppercase tracking-wider bg-blue-50 border border-blue-200 px-2.5 py-0.5 rounded-full mb-2">Завуч УВР (5-11 кл)</span>
+                <h3 class="font-bold text-slate-900 leading-snug">Неклюдова<br>Светлана Николаевна</h3>
+                <div class="w-full border-t border-slate-100 pt-4 mt-4 space-y-2 text-xs text-slate-600">
+                    <a href="tel:+79119221045" class="flex items-center justify-center gap-1.5 hover:text-schoolRed transition-colors font-semibold">
+                        <i class="fa-solid fa-phone text-slate-400"></i>+7 (911) 922-10-45
+                    </a>
+                </div>
+            </div>
+
+            <!-- Завуч 1-4 -->
+            <div class="bg-white rounded-2xl border border-slate-200 shadow-md p-6 flex flex-col items-center text-center relative overflow-hidden transition-transform duration-300 hover:-translate-y-1">
+                <div class="absolute top-0 inset-x-0 h-2 bg-emerald-500"></div>
+                <div class="w-20 h-20 rounded-full bg-emerald-50 border-2 border-emerald-400/40 flex items-center justify-center text-emerald-600 text-2xl font-bold mb-4 font-serif">
+                    НА
+                </div>
+                <span class="text-xs font-extrabold text-emerald-600 uppercase tracking-wider bg-emerald-50 border border-emerald-200 px-2.5 py-0.5 rounded-full mb-2">Завуч УВР (1-4 кл)</span>
+                <h3 class="font-bold text-slate-900 leading-snug">Вольф<br>Наталья Александровна</h3>
+                <div class="w-full border-t border-slate-100 pt-4 mt-4 space-y-2 text-xs text-slate-600">
+                    <a href="tel:+79119221045" class="flex items-center justify-center gap-1.5 hover:text-schoolRed transition-colors font-semibold">
+                        <i class="fa-solid fa-phone text-slate-400"></i>+7 (911) 922-10-45
+                    </a>
+                </div>
+            </div>
+
+            <!-- Завуч 5-11 2 -->
+            <div class="bg-white rounded-2xl border border-slate-200 shadow-md p-6 flex flex-col items-center text-center relative overflow-hidden transition-transform duration-300 hover:-translate-y-1">
+                <div class="absolute top-0 inset-x-0 h-2 bg-purple-500"></div>
+                <div class="w-20 h-20 rounded-full bg-purple-50 border-2 border-purple-400/40 flex items-center justify-center text-purple-600 text-2xl font-bold mb-4 font-serif">
+                    ДО
+                </div>
+                <span class="text-xs font-extrabold text-purple-600 uppercase tracking-wider bg-purple-50 border border-purple-200 px-2.5 py-0.5 rounded-full mb-2">Завуч УВР (5-11 кл)</span>
+                <h3 class="font-bold text-slate-900 leading-snug">Хабиров<br>Дмитрий Олегович</h3>
+                <div class="w-full border-t border-slate-100 pt-4 mt-4 space-y-2 text-xs text-slate-600">
+                    <a href="tel:+79119221045" class="flex items-center justify-center gap-1.5 hover:text-schoolRed transition-colors font-semibold">
+                        <i class="fa-solid fa-phone text-slate-400"></i>+7 (911) 922-10-45
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- БЛОК: МЕРОПРИЯТИЯ -->
+    <section id="events" class="py-16 bg-slate-100 border-y border-slate-200/60 w-full">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <h2 class="text-3xl font-bold text-schoolDarkBlue tracking-tight mb-3 font-serif">Предстоящие мероприятия</h2>
+                <p class="text-slate-600 text-sm">Важные события школьного года, праздники, ярмарки и открытые олимпиады.</p>
+                <div class="w-24 h-1 bg-schoolGold mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Мероприятие 1 -->
+                <div class="bg-white rounded-2xl border border-slate-200/80 shadow-md overflow-hidden flex flex-col justify-between">
+                    <div class="bg-schoolBlue h-40 flex flex-col justify-between p-5 text-white relative">
+                        <span class="self-start text-[10px] font-bold uppercase bg-white/20 px-2 py-0.5 rounded border border-white/10 text-schoolGold">Праздник</span>
+                        <div>
+                            <span class="text-xs text-slate-300 block mb-0.5"><i class="fa-regular fa-calendar mr-1.5 text-schoolGold"></i>Октябрь, 2026</span>
+                            <h4 class="font-bold text-lg font-serif">День Учителя в «Таурас»</h4>
+                        </div>
+                    </div>
+                    <div class="p-5 flex-grow flex flex-col justify-between">
+                        <p class="text-xs text-slate-600 leading-relaxed mb-4">
+                            Торжественный концерт, подготовленный творческими коллективами центра дополнительного образования «Созвездие». Поздравления, сюрпризы и праздничная атмосфера.
+                        </p>
+                        <div class="flex items-center justify-between border-t border-slate-100 pt-3 text-[11px] text-slate-500 font-medium">
+                            <span><i class="fa-regular fa-clock mr-1 text-schoolGold"></i>По графику</span>
+                            <span><i class="fa-solid fa-location-dot mr-1 text-schoolGold"></i>Актовый зал</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Мероприятие 2 -->
+                <div class="bg-white rounded-2xl border border-slate-200/80 shadow-md overflow-hidden flex flex-col justify-between">
+                    <div class="bg-schoolRed h-40 flex flex-col justify-between p-5 text-white relative">
+                        <span class="self-start text-[10px] font-bold uppercase bg-white/20 px-2 py-0.5 rounded border border-white/10 text-white">Творчество</span>
+                        <div>
+                            <span class="text-xs text-slate-300 block mb-0.5"><i class="fa-regular fa-calendar mr-1.5 text-schoolGold"></i>Ноябрь, 2026</span>
+                            <h4 class="font-bold text-lg font-serif">Осенний Музыкальный Фестиваль</h4>
+                        </div>
+                    </div>
+                    <div class="p-5 flex-grow flex flex-col justify-between">
+                        <p class="text-xs text-slate-600 leading-relaxed mb-4">
+                            Выступления воспитанников Музыкального театра и студии вокала «Созвездие Таурас». Семейный музыкальный праздник, открытый для родителей и гостей.
+                        </p>
+                        <div class="flex items-center justify-between border-t border-slate-100 pt-3 text-[11px] text-slate-500 font-medium">
+                            <span><i class="fa-regular fa-clock mr-1 text-schoolGold"></i>17:00</span>
+                            <span><i class="fa-solid fa-location-dot mr-1 text-schoolGold"></i>Холл школы</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Мероприятие 3 -->
+                <div class="bg-white rounded-2xl border border-slate-200/80 shadow-md overflow-hidden flex flex-col justify-between">
+                    <div class="bg-schoolDarkBlue h-40 flex flex-col justify-between p-5 text-white relative">
+                        <span class="self-start text-[10px] font-bold uppercase bg-white/20 px-2 py-0.5 rounded border border-white/10 text-schoolGold">Выставка</span>
+                        <div>
+                            <span class="text-xs text-slate-300 block mb-0.5"><i class="fa-regular fa-calendar mr-1.5 text-schoolGold"></i>Декабрь, 2026</span>
+                            <h4 class="font-bold text-lg font-serif">Рождественская Ярмарка</h4>
+                        </div>
+                    </div>
+                    <div class="p-5 flex-grow flex flex-col justify-between">
+                        <p class="text-xs text-slate-600 leading-relaxed mb-4">
+                            Большая благотворительная выставка-продажа поделок, картин и изделий Керамической студии. Мастер-классы от преподавателей дополнительного образования.
+                        </p>
+                        <div class="flex items-center justify-between border-t border-slate-100 pt-3 text-[11px] text-slate-500 font-medium">
+                            <span><i class="fa-regular fa-clock mr-1 text-schoolGold"></i>12:00 - 15:00</span>
+                            <span><i class="fa-solid fa-location-dot mr-1 text-schoolGold"></i>Школа «Таурас»</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- БЛОК: ОБРАТНАЯ СВЯЗЬ -->
+    <section id="feedback" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex-grow">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+            <!-- Информационная часть -->
+            <div class="lg:col-span-5 space-y-6">
+                <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-schoolGold/20 text-schoolDarkBlue border border-schoolGold/30">
+                    <i class="fa-regular fa-paper-plane text-schoolRed"></i> Автоматическая отправка данных
+                </div>
+                <h2 class="text-3xl font-extrabold text-schoolDarkBlue tracking-tight leading-tight font-serif uppercase">
+                    Запись в школу и секции
+                </h2>
+                <p class="text-slate-600 text-sm leading-relaxed">
+                    Заполните форму обратной связи. Администрация школы автоматически получит ваше обращение прямо в структурированную **Google Таблицу**. Мы перезвоним вам в течение дня!
+                </p>
+                <div class="bg-schoolBlue/5 border border-schoolBlue/10 rounded-2xl p-5 space-y-4">
+                    <h4 class="font-bold text-schoolDarkBlue text-sm flex items-center gap-2">
+                        <i class="fa-solid fa-circle-info text-schoolGold"></i> Инструкция по связыванию:
+                    </h4>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        Для того чтобы форма отправляла обращения в реальную таблицу Google, настройте Apps Script в вашей таблице по нашей инструкции <code class="bg-slate-200 px-1 py-0.5 rounded font-mono text-[11px]">README.md</code> и вставьте сгенерированный URL-адрес в код файла <code class="bg-slate-200 px-1 py-0.5 rounded font-mono text-[11px]">index.html</code>.
+                    </p>
+                </div>
+                <div class="bg-amber-50 border border-schoolGold/30 rounded-2xl p-5 flex items-start gap-4">
+                    <i class="fa-solid fa-headset text-2xl text-schoolGold mt-1"></i>
+                    <div>
+                        <h4 class="font-bold text-schoolDarkBlue text-sm">Приемная комиссия:</h4>
+                        <p class="text-xs text-slate-600 mt-1">Телефоны: <span class="font-bold text-schoolRed">+7 (911) 920-20-15</span>, <span class="font-bold text-schoolRed">+7 (911) 922-10-45</span></p>
+                        <p class="text-xs text-slate-500 mt-0.5">Адрес: г. Санкт-Петербург, Лахтинский пр., д. 102, к. 3, стр. 1</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Форма обратной связи -->
+            <div class="lg:col-span-7 bg-white rounded-2xl border border-slate-200/80 shadow-md p-6 md:p-8 relative">
+                <div class="absolute top-0 inset-x-0 h-1.5 bg-schoolRed"></div>
+                <!-- Уведомление об успехе -->
+                <div id="form-success" class="hidden mb-6 p-4 bg-emerald-50 border border-emerald-200 text-emerald-800 rounded-xl flex items-start gap-3">
+                    <i class="fa-regular fa-circle-check text-xl mt-0.5 flex-shrink-0 text-emerald-600"></i>
+                    <div>
+                        <h4 class="font-bold text-sm">Заявка отправлена успешно!</h4>
+                        <p class="text-xs mt-1 text-emerald-700">Спасибо за обращение. Данные успешно направлены в Google Таблицу администрации частной школы «Таурас».</p>
+                    </div>
+                </div>
+
+                <!-- Уведомление об ошибке -->
+                <div id="form-error" class="hidden mb-6 p-4 bg-rose-50 border border-rose-200 text-rose-800 rounded-xl flex items-start gap-3">
+                    <i class="fa-regular fa-circle-xmark text-xl mt-0.5 flex-shrink-0 text-rose-600"></i>
+                    <div>
+                        <h4 class="font-bold text-sm">Ошибка при отправке</h4>
+                        <p class="text-xs mt-1 text-rose-700">Не удалось отправить форму. Проверьте правильность подключения Google Apps Script в скрипте сайта.</p>
+                    </div>
+                </div>
+
+                <!-- Сама форма -->
+                <form id="school-feedback-form" class="space-y-4">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label for="name" class="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-1.5">Ваше Имя</label>
+                            <input type="text" id="name" name="name" required placeholder="Иван Иванов" 
+                                class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-schoolBlue focus:bg-white transition-all">
+                        </div>
+                        <div>
+                            <label for="phone" class="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-1.5">Номер телефона</label>
+                            <input type="tel" id="phone" name="phone" required placeholder="+7 (911) 000-00-00" 
+                                class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-schoolBlue focus:bg-white transition-all">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label for="email" class="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-1.5">Email</label>
+                            <input type="email" id="email" name="email" required placeholder="user@example.com" 
+                                class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-schoolBlue focus:bg-white transition-all">
+                        </div>
+                        <div>
+                            <label for="class-select" class="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-1.5">Цель обращения</label>
+                            <select id="class-select" name="class" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-schoolBlue focus:bg-white transition-all">
+                                <option value="Запись в школу">Запись ребенка в 1-11 класс школы</option>
+                                <option value="Запись на кружок">Запись на кружок (центр «Созвездие»)</option>
+                                <option value="Другой вопрос">Другой вопрос / Задать вопрос</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="service-interest" class="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-1.5">Интересующий кружок / секция (если применимо)</label>
+                        <input type="text" id="service-interest" name="service" placeholder="Выберите секцию из каталога выше или напишите самостоятельно" 
+                            class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-schoolBlue focus:bg-white transition-all">
+                    </div>
+
+                    <div>
+                        <label for="message" class="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-1.5">Ваш комментарий / Вопрос</label>
+                        <textarea id="message" name="message" required rows="4" placeholder="Укажите возраст ребенка, класс или подробности вашего обращения..." 
+                            class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-schoolBlue focus:bg-white transition-all resize-none"></textarea>
+                    </div>
+
+                    <button type="submit" id="submit-btn" class="w-full bg-schoolBlue hover:bg-schoolDarkBlue text-white border border-schoolGold/30 rounded-xl py-3 font-semibold transition-all shadow-md flex items-center justify-center gap-2">
+                        <span><i class="fa-regular fa-paper-plane text-schoolGold"></i> Отправить обращение</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- ПОДВАЛ (FOOTER) -->
+    <footer class="bg-schoolDarkBlue text-slate-400 py-12 border-t border-schoolGold/30 w-full">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+                <div>
+                    <div class="flex items-center gap-3 text-white mb-4">
+                        <img src="logo.jpg" alt="Герб" onerror="this.src='https://placehold.co/100x100?text=Герб'" class="w-10 h-10 object-contain bg-white p-0.5 rounded border border-schoolGold">
+                        <span class="font-bold text-lg font-serif tracking-tight text-white uppercase">ТАУРАС</span>
+                    </div>
+                    <p class="text-xs text-slate-300 leading-relaxed">
+                        Частная школа «Таурас» — современное образование с классическими традициями. Центр дополнительного образования «Созвездие Таурас» для детей и взрослых.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="font-bold text-schoolGold text-xs uppercase tracking-wider mb-4 font-serif">Разделы сайта</h4>
+                    <ul class="space-y-2 text-xs">
+                        <li><a href="#schedule" class="hover:text-white transition-colors">Интерактивное расписание уроков</a></li>
+                        <li><a href="#services" class="hover:text-white transition-colors">Секции и кружки «Созвездие»</a></li>
+                        <li><a href="#administration" class="hover:text-white transition-colors">Администрация школы</a></li>
+                        <li><a href="#events" class="hover:text-white transition-colors">Школьные мероприятия</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-schoolGold text-xs uppercase tracking-wider mb-4 font-serif">Контакты</h4>
+                    <ul class="space-y-2 text-xs text-slate-300">
+                        <li><i class="fa-solid fa-map-location-dot w-5 text-schoolGold"></i>197229, г. Санкт-Петербург, Лахтинский пр., д. 102, к. 3, стр. 1</li>
+                        <li><i class="fa-solid fa-phone w-5 text-schoolGold"></i>+7 (911) 920-20-15</li>
+                        <li><i class="fa-solid fa-phone w-5 text-schoolGold"></i>+7 (911) 922-10-45</li>
+                        <li><i class="fa-solid fa-envelope w-5 text-schoolGold"></i><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="90f9fef6ffd0e4f1e5e2f1e3bde3f3f8fffffcbee2e5">[email&#160;protected]</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-slate-700/50 pt-8 flex flex-col md:flex-row items-center justify-between text-[11px] text-slate-400">
+                <span>&copy; 2026 Частная школа «Таурас». Все права защищены. Разработано для GitHub Pages.</span>
+                <span class="mt-2 md:mt-0 text-slate-500">Адрес школы на Яндекс.Картах: Лахтинский пр., д.102</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- СКРИПТЫ -->
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        // БАЗА ДАННЫХ РАСПИСАНИЯ
+        const scheduleData = {
+  "1": {
+    "times": ["9:00-9:35", "10:00-10:35", "10:50-11:25", "11:40-12:15", "13:10-13:50", "14:00-14:40", "14:50-15:30", "15:50-16:30", "16:40-17:20", "17:30-18:00"],
+    "days": {
+      "ПН": ["Литературное чтение", "Русский язык", "Математика", "Физическая культура", "Классный час", "ПРОГУЛКА", "Шахматы", "Грамотный читатель", "ПсихологиЯ", "Самоподготовка"],
+      "ВТ": ["Литературное чтение", "Русский язык", "Труд", "Математика", "Иностранный язык", "ПРОГУЛКА", "Иностранный язык", "Проектная деятельность", "Самоподготовка", "Самоподготовка"],
+      "СР": ["Литературное чтение", "Математика", "Окружающий мир", "Русский язык", "Иностранный язык", "Музыкальный театр", "ПРОГУЛКА", "Грамотный читатель", "Самоподготовка", "Киноклуб"],
+      "ЧТ": ["Окружающий мир", "Русский язык", "Физическая культура", "Математика", "Иностранный язык", "ПРОГУЛКА", "Общешкольное мероприятие", "Хор", "Самоподготовка", "Страноведение (из.яз)"],
+      "ПТ": ["Литературное чтение", "Физическая культура", "Иностранный язык", "Русский язык", "ИЗО", "Музыка", "ПРОГУЛКА", "ПсихологиЯ", "Самоподготовка", "Чтение с увлечением"]
+    }
+  },
+  "2": {
+    "times": ["9:00-9:40", "10:00-10:40", "10:50-11:30", "11:40-12:20", "13:10-13:50", "14:00-14:40", "14:50-15:30", "15:50-16:30", "16:40-17:20", "17:30-18:00"],
+    "days": {
+      "ПН": ["Литературное чтение", "Русский язык", "Труд", "Математика", "Классный час", "ПРОГУЛКА", "Иностранный язык", "Шахматы", "Самоподготовка", "ПсихологиЯ"],
+      "ВТ": ["Литературное чтение", "Русский язык", "Физическая культура", "Математика", "ИЗО", "Грамотный читатель", "ПРОГУЛКА", "Самоподготовка", "Проектная деятельность", "Самоподготовка"],
+      "СР": ["Иностранный язык", "Математика", "Русский язык", "Физическая культура", "Литературное чтение", "Самоподготовка", "ПРОГУЛКА", "Музыкальный театр", "Самоподготовка", "Киноклуб"],
+      "ЧТ": ["Окружающий мир", "Русский язык", "Иностранный язык", "Литературное чтение", "Физическая культура", "ПРОГУЛКА", "Общешкольное мероприятие", "Хор", "Самоподготовка", "Страноведение (из.яз)"],
+      "ПТ": ["Окружающий мир", "Русский язык", "Математика", "Музыка", "Иностранный язык", "Иностранный язык", "ПРОГУЛКА", "Самоподготовка", "Информатика", "Чтение с увлечением"]
+    }
+  },
+  "3": {
+    "times": ["9:00-9:40", "10:00-10:40", "10:50-11:30", "11:40-12:20", "13:10-13:50", "14:00-14:40", "14:50-15:30", "15:50-16:30", "16:40-17:20", "17:30-18:00"],
+    "days": {
+      "ПН": ["Литературное чтение", "Русский язык", "Физическая культура", "Математика", "Классный час", "Самоподготовка", "ПРОГУЛКА", "ПсихологиЯ", "Шахматы", "Самоподготовка"],
+      "ВТ": ["Иностранный язык", "Математика", "Русский язык", "Труд", "Литературное чтение", "Самоподготовка", "ПРОГУЛКА", "Грамотный читатель", "Проектная деятельность", "Самоподготовка(из.яз)"],
+      "СР": ["Окружающий мир", "Русский язык", "Физическая культура", "Математика", "Иностранный язык", "Самоподготовка", "ПРОГУЛКА", "Информатика", "Хор", "Киноклуб"],
+      "ЧТ": ["Окружающий мир", "Математика", "Русский язык", "Литературное чтение", "Иностранный язык", "Музыка", "Общешкольное мероприятие", "ПРОГУЛКА", "Самоподготовка", "Страноведение (из.яз)"],
+      "ПТ": ["Литературное чтение", "Русский язык", "Физическая культура", "ИЗО", "Иностранный язык", "Иностранный язык", "ПРОГУЛКА", "Музыкальный театр", "Самоподготовка", "Чтение с увлечением"]
+    }
+  },
+  "4": {
+    "times": ["9:00-9:40", "10:00-10:40", "10:50-11:30", "11:40-12:20", "13:10-13:50", "14:00-14:40", "14:50-15:30", "15:50-16:30", "16:40-17:20", "17:30-18:00"],
+    "days": {
+      "ПН": ["Литературное чтение", "Математика", "Русский язык", "Труд", "Классный час", "Иностранный язык", "ПРОГУЛКА", "Самоподготовка / Информатика", "Информатика / Самоподготовка", "Шахматы"],
+      "ВТ": ["Окружающий мир", "Русский язык", "Математика", "Литературное чтение", "Физическая культура", "Иностранный язык", "ПРОГУЛКА", "Самоподготовка", "Подготовка к ВПР", "ПсихологиЯ"],
+      "СР": ["Русский язык", "Иностранный язык", "Математика", "Музыка", "Окружающий мир", "Иностранный язык", "ПРОГУЛКА", "Самоподготовка", "Хор/Ансамбль", "Проектная деятельность"],
+      "ЧТ": ["9:00-10:00 Бассейн", "10:30-10:50 ЗАВТРАК", "Русский язык", "Математика", "Литературное чтение", "ОРКСЭ", "Общешкольное мероприятие", "ПРОГУЛКА", "Самоподготовка", "Страноведение (из.яз)"],
+      "ПТ": ["Русский язык", "Литературное чтение", "ИЗО", "Иностранный язык", "Физическая культура", "Грамотный читатель", "ПРОГУЛКА", "Самоподготовка", "Музыкальный театр", "Чтение с увлечением"]
+    }
+  },
+  "5": {
+    "times": ["9:00-9:40", "10:00-10:40", "10:50-11:30", "11:40-12:20", "12:30-13:10", "14:00-14:40", "14:50-15:30", "15:50-16:30", "16:40-17:20", "17:30-18:00"],
+    "days": {
+      "ПН": ["Математика", "Русский язык", "История", "Литература", "Разговоры о важном", "География", "Разговорный английский", "ПРОГУЛКА", "Самоподготовка", "Самоподготовка"],
+      "ВТ": ["Русский язык", "Литература", "Математика", "Физическая культура", "Иностранный язык", "Труд (Технология)", "Труд (Технология)", "ПРОГУЛКА", "Проектная деятельность", "Самоподготовка"],
+      "СР": ["Физическая культура", "Математика", "История", "Русский язык", "Литература", "Музыка", "Финансовая грамотность", "ПРОГУЛКА", "Подготовка к ВПР", "Самоподготовка"],
+      "ЧТ": ["Математика", "Изобразительное искусство", "Русский язык", "Разговорный английский", "Информатика", "Биология", "ПсихологиЯ", "ПРОГУЛКА", "Самоподготовка", "Самоподготовка"],
+      "ПТ": ["Русский язык", "Иностранный язык", "Разговорный английский", "Математика", "Математическая грамотность", "История", "Общешкольное мероприятие", "ПРОГУЛКА", "Самоподготовка", "Самоподготовка"]
+    }
+  },
+  "6": {
+    "times": ["9:00-9:40", "10:00-10:40", "10:50-11:30", "11:40-12:20", "12:30-13:10", "14:00-14:40", "14:50-15:30", "15:50-16:30", "16:40-17:20", "17:30-18:00"],
+    "days": {
+      "ПН": ["Физическая культура", "Иностранный язык", "Русский язык", "Математика", "Разговоры о важном", "Литература", "Музыка", "ПРОГУЛКА", "Самоподготовка", "Самоподготовка"],
+      "ВТ": ["Математика", "История", "Русский язык", "Русский язык", "География", "Разговорный английский", "Про-физика", "ПРОГУЛКА", "Проектная деятельность", "Самоподготовка"],
+      "СР": ["Русский язык", "Литература", "Математика", "Биология", "История", "Иностранный язык", "Разговорный английский", "ПРОГУЛКА", "Подготовка к ВПР", "Самоподготовка"],
+      "ЧТ": ["Русский язык", "Литература", "Иностранный язык", "Математика", "Математическая грамотность", "Информатика", "Изобразительное искусство", "ПРОГУЛКА", "Самоподготовка", "Самоподготовка"],
+      "ПТ": ["Физическая культура", "История", "Русский язык", "Математика", "Труд (Технология)", "Труд (Технология)", "Общешкольное мероприятие", "ПРОГУЛКА", "Самоподготовка", "Самоподготовка"]
+    }
+  },
+  "7": {
+    "times": ["9:00-9:40", "10:00-10:40", "10:50-11:30", "11:40-12:20", "12:30-13:10", "14:00-14:40", "14:50-15:30", "15:50-16:30", "16:40-17:20", "17:30-18:00"],
+    "days": {
+      "ПН": ["Иностранный язык", "Русский язык", "Алгебра", "История", "Разговоры о важном", "Труд (Технология)", "Труд (Технология)", "Самоподготовка", "Самоподготовка", "Самоподготовка"],
+      "ВТ": ["Физическая культура", "Геометрия", "Информатика", "История", "Русский язык", "Вероятность и статистика", "Музыка", "Проектная деятельность", "Самоподготовка", "Самоподготовка"],
+      "СР": ["Русский язык", "Литература", "Биология", "Алгебра", "Разговорный английский", "Физика", "Русский язык. Сложные вопросы", "Самоподготовка", "Подготовка к ВПР", "Самоподготовка"],
+      "ЧТ": ["Физика", "Русский язык", "Геометрия", "История", "География", "Иностранный язык", "Разговорный английский", "Физическая культура", "Россия- мои горизонты", "Самоподготовка"],
+      "ПТ": ["Иностранный язык", "Изобразительное искусство", "Алгебра", "География", "Литература", "Сложные вопросы математики", "Общешкольное мероприятие", "Самоподготовка", "Самоподготовка", "Самоподготовка"]
+    }
+  },
+  "8.1": {
+    "times": ["9:00-9:40", "10:00-10:40", "10:50-11:30", "11:40-12:20", "12:30-13:10", "14:00-14:40", "14:50-15:30", "15:50-16:30", "16:40-17:20", "17:30-18:00"],
+    "days": {
+      "ПН": ["Русский язык", "Биология", "Иностранный язык", "Алгебра", "Разговоры о важном", "Физика", "Физическая культура", "ОБЖ", "Самоподготовка", "Самоподготовка"],
+      "ВТ": ["Геометрия", "География", "Физика", "Информатика", "История", "Математика. Сложные вопросы ОГЭ", "Русский язык. Сложные вопросы ОГЭ", "Труд (Технология)", "Проектная деятельность", "Самоподготовка"],
+      "СР": ["Иностранный язык", "История", "Русский язык", "Алгебра", "Вероятность и статистика", "Биология", "Юный журналист", "Россия - мои горизонты", "Подготовка к ВПР", "Самоподготовка"],
+      "ЧТ": ["Иностранный язык", "Геометрия", "Русский язык", "Литература", "Химия", "История", "Физическая культура", "Музыка", "Самоподготовка", "Самоподготовка"],
+      "ПТ": ["Химия", "Литература", "Алгебра", "Разговорный английский", "Разговорный английский", "География", "Общешкольное мероприятие", "Самоподготовка", "Самоподготовка", "Самоподготовка"]
+    }
+  },
+  "8.2": {
+    "times": ["9:00-9:40", "10:00-10:40", "10:50-11:30", "11:40-12:20", "12:30-13:10", "14:00-14:40", "14:50-15:30", "15:50-16:30", "16:40-17:20", "17:30-18:00"],
+    "days": {
+      "ПН": ["Русский язык", "Алгебра", "Иностранный язык", "Физика", "Разговоры о важном", "Химия", "Физическая культура", "ОБЖ", "Самоподготовка", "Самоподготовка"],
+      "ВТ": ["Химия", "Геометрия", "Вероятность и статистика", "География", "История", "Биология", "Математика. Сложные вопросы ОГЭ", "Физическая культура", "Проектная деятельность", "Самоподготовка"],
+      "СР": ["Иностранный язык", "История", "Алгебра", "Русский язык", "Биология", "Русский язык. Сложные вопросы ОГЭ", "Труд (Технология)", "Россия - мои горизонты", "Подготовка к ВПР", "Самоподготовка"],
+      "ЧТ": ["Иностранный язык", "Информатика", "Русский язык", "Литература", "Геометрия", "История", "Физическая культура", "Искусственный интеллект", "Самоподготовка", "Самоподготовка"],
+      "ПТ": ["Алгебра", "Литература", "География", "Разговорный английский", "Разговорный английский", "Физика", "Общешкольное мероприятие", "Самоподготовка", "Самоподготовка", "Самоподготовка"]
+    }
+  },
+  "9": {
+    "times": ["9:00-9:40", "10:00-10:40", "10:50-11:30", "11:40-12:20", "12:30-13:10", "14:00-14:40", "14:50-15:30", "15:50-16:30", "16:40-17:20", "17:30-18:00"],
+    "days": {
+      "ПН": ["Алгебра", "Химия", "Биология", "Иностранный язык", "Разговоры о важном", "История", "Подготовка к ОГЭ. Математика", "Подготовка к ОГЭ. История/английский", "Самоподготовка", "Самоподготовка"],
+      "ВТ": ["Русский язык", "Литература", "Обществознание", "Геометрия", "Физика", "ОБЖ", "География", "Физическая культура", "Проектная деятельность", "Самоподготовка"],
+      "СР": ["Алгебра", "Физика", "Иностранный язык", "Разговорный английский", "Русский язык", "Литература", "Физическая культура", "Подготовка к ОГЭ. Обществознание/биология", "Россия - мои горизонты", "Самоподготовка"],
+      "ЧТ": ["Русский язык", "История", "Геометрия", "Вероятность и статистика", "Физика", "Разговорный английский", "Информатика", "Подготовка к ОГЭ. Русский язык", "Труд (технология)", "Самоподготовка"],
+      "ПТ": ["Иностранный язык", "Биология", "Химия", "Алгебра", "География", "Литература", "Общешкольное мероприятие", "Подготовка к ОГЭ. Физика", "Самоподготовка", "Самоподготовка"]
+    }
+  },
+  "10": {
+    "times": ["9:00-9:40", "10:00-10:40", "10:50-11:30", "11:40-12:20", "12:30-13:10", "14:00-14:40", "14:50-15:30", "15:50-16:30", "16:40-17:20", "17:30-18:00"],
+    "days": {
+      "ПН": ["Алгебра", "Русский язык", "Физика", "Химия", "Разговоры о важном", "Русский язык. Подготовка к ЕГЭ", "Физическая культура", "Подготовка к ЕГЭ. Обществознание", "Самоподготовка", "Самоподготовка"],
+      "ВТ": ["Русский язык", "Литература", "Алгебра", "Геометрия", "Иностранный язык", "Обществознание", "Физическая культура", "Математика. Подготовка к ЕГЭ", "Проектная деятельность", "Самоподготовка"],
+      "СР": ["Информатика", "Геометрия", "Литература", "История", "Иностранный язык", "ОБЖ", "Индивидуальный проект", "Физическая культура", "Математика. Подготовка к ЕГЭ", "Самоподготовка"],
+      "ЧТ": ["Алгебра", "Геометрия", "Обществознание", "Иностранный язык", "История", "Биология", "Физическая культура", "Русский язык. Подготовка к ЕГЭ", "Россия - мои горизонты", "Самоподготовка"],
+      "ПТ": ["Алгебра", "Вероятность и статистика", "Литература", "Физика", "Физическая культура", "География", "Общешкольное мероприятие", "Русский язык. Подготовка к ЕГЭ", "Самоподготовка", "Самоподготовка"]
+    }
+  },
+  "11": {
+    "times": ["9:00-9:40", "10:00-10:40", "10:50-11:30", "11:40-12:20", "12:30-13:10", "14:00-14:40", "14:50-15:30", "15:50-16:30", "16:40-17:20", "17:30-18:00"],
+    "days": {
+      "ПН": ["Информатика", "История", "Русский язык", "Иностранный язык", "Разговоры о важном", "Иностранный язык", "Физическая культура", "Подготовка к ЕГЭ. Английский язык", "Самоподготовка", "Самоподготовка"],
+      "ВТ": ["Обществознание", "Геометрия", "Литература", "Литература", "Иностранный язык", "Иностранный язык", "Физическая культура", "Подготовка к ЕГЭ. Русский язык", "Подготовка к ЕГЭ. Английский язык", "Самоподготовка"],
+      "СР": ["Русский язык", "Литература", "Алгебра", "Вероятность и статистика", "Физика", "ОБЖ", "Физическая культура", "Подготовка к ЕГЭ. Математика", "Самоподготовка", "Самоподготовка"],
+      "ЧТ": ["Литература", "Литература", "Алгебра", "Химия", "Иностранный язык", "Биология", "Подготовка к ЕГЭ. Математика", "Подготовка к ЕГЭ. Обществознание", "Россия - мои горизонты", "Самоподготовка"],
+      "ПТ": ["Физика", "Алгебра", "История", "Обществознание", "География", "Подготовка к ЕГЭ. Русский язык", "Подготовка к ЕГЭ. Русский язык", "Подготовка к ЕГЭ. Физика", "Подготовка к ЕГЭ. История", "Самоподготовка"]
+    }
+  }
+};
+
+        // БАЗА ДАННЫХ ДОП. ОБРАЗОВАНИЯ
+        const additionalServices = [
+  {
+    "category": "Технологии будущего",
+    "icon": "fa-robot",
+    "color": "indigo",
+    "items": [
+      {"name": "3D Моделирование", "schedule": "Вторник/Четверг 16:30 - 18:00", "price": "15 800 ₽/мес"},
+      {"name": "Мир нейросети", "schedule": "Понедельник/Пятница 17:00 - 18:00", "price": "12 300 ₽/мес"},
+      {"name": "Робототехника", "schedule": "Вторник 16:30 - 18:00", "price": "9 200 ₽/мес"},
+      {"name": "Программирование", "schedule": "Среда 16:30 - 18:00", "price": "9 200 ₽/мес"}
+    ]
+  },
+  {
+    "category": "Творческие направления",
+    "icon": "fa-palette",
+    "color": "amber",
+    "items": [
+      {"name": "Керамическая студия", "schedule": "Вторник 16:30 - 18:00", "price": "12 300 ₽/мес"},
+      {"name": "Рисование / Живопись", "schedule": "Понедельник 17:00-18:00, Четверг 15:50-16:50", "price": "12 300 ₽/мес"}
+    ]
+  },
+  {
+    "category": "Музыкальное направление",
+    "icon": "fa-music",
+    "color": "rose",
+    "items": [
+      {"name": "Музыкальный театр (Младшая группа)", "schedule": "Вторник/Четверг 16:30 - 17:30", "price": "12 300 ₽/мес"},
+      {"name": "Музыкальный театр (Старшая группа)", "schedule": "Вторник/Четверг 17:30 - 18:30", "price": "12 300 ₽/мес"},
+      {"name": "Барабаны (Индивидуально)", "schedule": "Индивидуальный график", "price": "16 000 ₽ / 8 занятий"},
+      {"name": "Гитара / Электрогитара (Индивидуально)", "schedule": "Индивидуальный график", "price": "16 000 ₽ / 8 занятий"},
+      {"name": "Фортепиано (Индивидуально)", "schedule": "Индивидуальный график", "price": "16 000 ₽ / 8 занятий"},
+      {"name": "Вокал (Индивидуально)", "schedule": "Индивидуальный график", "price": "16 000 ₽ / 8 занятий"},
+      {"name": "Флейта (Индивидуально)", "schedule": "Индивидуальный график", "price": "16 000 ₽ / 8 занятий"}
+    ]
+  },
+  {
+    "category": "Спортивные направления",
+    "icon": "fa-dumbbell",
+    "color": "emerald",
+    "items": [
+      {"name": "Футбол", "schedule": "Понедельник/Среда 17:00 - 18:00", "price": "9 200 ₽/мес"},
+      {"name": "Спортивная аэробика (5-11 классы)", "schedule": "Вторник/Четверг 17:00 - 18:00", "price": "9 200 ₽/мес"},
+      {"name": "«Fitness Junior» (ОФП, 1-4 классы)", "schedule": "Понедельник/Пятница 16:00 - 17:00", "price": "9 200 ₽/мес"},
+      {"name": "Лазерный тир", "schedule": "Индивидуально / Группа", "price": "8 200 ₽/мес"}
+    ]
+  },
+  {
+    "category": "Логопед и психолог",
+    "icon": "fa-brain",
+    "color": "sky",
+    "items": [
+      {"name": "Логопед", "schedule": "Индивидуально / Группа", "price": "16 000 ₽ / 8 занятий"},
+      {"name": "Логопедический массаж", "schedule": "По записи", "price": "1 800 ₽/сеанс"},
+      {"name": "Психолог (Консультация)", "schedule": "Индивидуально по записи", "price": "3 500 ₽/сеанс"}
+    ]
+  },
+  {
+    "category": "Индивидуальные занятия",
+    "icon": "fa-user-graduate",
+    "color": "blue",
+    "items": [
+      {"name": "Английский язык (Индивидуально)", "schedule": "По договоренности", "price": "16 000 ₽ / 8 занятий"},
+      {"name": "Русский язык (Индивидуально)", "schedule": "По договоренности", "price": "16 000 ₽ / 8 занятий"},
+      {"name": "Математика (Индивидуально)", "schedule": "По договоренности", "price": "16 000 ₽ / 8 занятий"},
+      {"name": "Информатика (Индивидуально)", "schedule": "По договоренности", "price": "16 000 ₽ / 8 занятий"},
+      {"name": "Физика (Индивидуально)", "schedule": "По договоренности", "price": "16 000 ₽ / 8 занятий"}
+    ]
+  },
+  {
+    "category": "Подготовка к экзаменам",
+    "icon": "fa-graduation-cap",
+    "color": "violet",
+    "items": [
+      {"name": "Подготовка к ОГЭ / ЕГЭ (Индивидуально)", "schedule": "Индивидуальный график", "price": "25 000 ₽ / 10 занятий"}
+    ]
+  },
+  {
+    "category": "Дошкольное отделение",
+    "icon": "fa-child",
+    "color": "orange",
+    "items": [
+      {"name": "Подготовка к школе", "schedule": "Суббота 10:00 - 12:00", "price": "12 300 ₽/мес"},
+      {"name": "Английский язык (5-7 лет)", "schedule": "Суббота 09:40 - 10:00", "price": "8 200 ₽/мес"},
+      {"name": "Робототехника для дошкольников", "schedule": "Суббота 12:00 - 13:30", "price": "8 200 ₽/мес"}
+    ]
+  }
+];
+
+        let activeClass = "1";
+        let activeDay = "ПН";
+
+        // РЕНДЕР КНОПОК КЛАССОВ
+        function renderClassButtons() {
+            const container = document.getElementById('class-buttons-container');
+            container.innerHTML = '';
+            Object.keys(scheduleData).forEach(cls => {
+                const btn = document.createElement('button');
+                btn.id = `class-${cls}`;
+                btn.className = cls === activeClass 
+                    ? "px-4 py-2 rounded-lg text-xs font-bold bg-schoolGold text-schoolDarkBlue border border-schoolGold/50 transition-all duration-200 shadow-sm"
+                    : "px-4 py-2 rounded-lg text-xs font-bold bg-white text-slate-600 border border-slate-200 hover:bg-slate-100 transition-all duration-200";
+                btn.innerText = `${cls} класс`;
+                btn.onclick = () => switchClass(cls);
+                container.appendChild(btn);
+            });
+        }
+
+        // РЕНДЕР ТАБЛИЦЫ РАСПИСАНИЯ
+        function renderScheduleTable() {
+            const tableBody = document.getElementById('schedule-table-body');
+            const tableTitleClass = document.getElementById('schedule-title-class');
+            const tableTitleDay = document.getElementById('schedule-title-day');
+            const statusBadge = document.getElementById('schedule-status-badge');
+
+            tableTitleClass.innerText = `${activeClass} класс`;
+
+            const daysNames = {
+                "ПН": "Понедельник",
+                "ВТ": "Вторник",
+                "СР": "Среда",
+                "ЧТ": "Четверг",
+                "ПТ": "Пятница"
+            };
+            tableTitleDay.innerText = daysNames[activeDay];
+
+            const currentData = scheduleData[activeClass];
+            const lessons = currentData.days[activeDay];
+            const times = currentData.times;
+
+            statusBadge.innerText = `${lessons.length} уроков / занятий`;
+            tableBody.innerHTML = '';
+
+            lessons.forEach((lesson, index) => {
+                const tr = document.createElement('tr');
+                tr.className = index % 2 === 0 ? "bg-white" : "bg-slate-50";
+
+                const displayNum = index + 1;
+                const displayTime = times[index] || "Уточняйте";
+
+                tr.innerHTML = `
+                    <td class="px-6 py-4 whitespace-nowrap text-sm font-extrabold text-schoolDarkBlue">${displayNum}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm font-semibold text-slate-500">${displayTime}</td>
+                    <td class="px-6 py-4 text-sm font-bold text-slate-800">${lesson}</td>
+                `;
+                tableBody.appendChild(tr);
+            });
+        }
+
+        function switchClass(className) {
+            document.getElementById(`class-${activeClass}`).className = "px-4 py-2 rounded-lg text-xs font-bold bg-white text-slate-600 border border-slate-200 hover:bg-slate-100 transition-all duration-200";
+            activeClass = className;
+            document.getElementById(`class-${activeClass}`).className = "px-4 py-2 rounded-lg text-xs font-bold bg-schoolGold text-schoolDarkBlue border border-schoolGold/50 transition-all duration-200 shadow-sm";
+            renderScheduleTable();
+        }
+
+        function switchDay(dayName) {
+            document.querySelectorAll('.day-btn').forEach(btn => {
+                btn.className = "day-btn px-4 py-2 rounded-lg text-xs font-bold uppercase transition-all duration-200 bg-slate-100 text-slate-600 hover:bg-slate-200";
+            });
+            document.getElementById(`day-${dayName}`).className = "day-btn px-4 py-2 rounded-lg text-xs font-bold uppercase transition-all duration-200 bg-schoolBlue text-white shadow-sm";
+            activeDay = dayName;
+            renderScheduleTable();
+        }
+
+        // РЕНДЕР КАРТОЧЕК ДОП. ОБРАЗОВАНИЯ
+        function renderServices() {
+            const container = document.getElementById('services-categories-container');
+            container.innerHTML = '';
+
+            additionalServices.forEach(cat => {
+                const categorySection = document.createElement('div');
+                categorySection.className = "space-y-4";
+
+                let colorClass = "bg-schoolBlue/5 border-schoolBlue/10 text-schoolBlue";
+                if(cat.color === 'emerald') colorClass = "bg-emerald-50 border-emerald-100 text-emerald-700";
+                if(cat.color === 'rose') colorClass = "bg-rose-50 border-rose-100 text-rose-700";
+                if(cat.color === 'amber') colorClass = "bg-amber-50 border-amber-100 text-amber-700";
+
+                categorySection.innerHTML = `
+                    <div class="flex items-center gap-3 border-b-2 border-slate-200 pb-3">
+                        <div class="w-10 h-10 rounded-xl flex items-center justify-center text-lg ${colorClass} border">
+                            <i class="fa-solid ${cat.icon}"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-schoolDarkBlue font-serif">${cat.category}</h3>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="services-grid-${cat.category.replace(/ /g, '_')}"></div>
+                `;
+
+                container.appendChild(categorySection);
+                const grid = document.getElementById(`services-grid-${cat.category.replace(/ /g, '_')}`);
+
+                cat.items.forEach(item => {
+                    const card = document.createElement('div');
+                    card.className = "bg-white rounded-2xl border border-slate-200 p-5 shadow-sm hover:shadow-md transition-all flex flex-col justify-between";
+                    card.innerHTML = `
+                        <div>
+                            <h4 class="font-bold text-slate-900 text-base mb-2 leading-tight">${item.name}</h4>
+                            <div class="space-y-1.5 text-xs text-slate-500 mb-4">
+                                <p><i class="fa-regular fa-clock w-4 text-schoolGold"></i> ${item.schedule}</p>
+                            </div>
+                        </div>
+                        <div class="border-t border-slate-100 pt-4 flex items-center justify-between">
+                            <div>
+                                <span class="text-[9px] text-slate-400 block uppercase font-bold tracking-wider">Стоимость</span>
+                                <span class="text-sm font-extrabold text-schoolBlue">${item.price}</span>
+                            </div>
+                            <button onclick="selectService('${item.name}')" class="px-3.5 py-1.5 bg-schoolBlue hover:bg-schoolDarkBlue text-white rounded-lg text-xs font-semibold transition-all shadow-sm">
+                                Записаться
+                            </button>
+                        </div>
+                    `;
+                    grid.appendChild(card);
+                });
+            });
+        }
+
+        function selectService(serviceName) {
+            const serviceField = document.getElementById('service-interest');
+            const selectField = document.getElementById('class-select');
+
+            if (serviceField) {
+                serviceField.value = serviceName;
+            }
+            if (selectField) {
+                selectField.value = "Запись на кружок";
+            }
+            document.getElementById('feedback').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // МОБИЛЬНОЕ МЕНЮ
+        const btn = document.getElementById('mobile-menu-button');
+        const menu = document.getElementById('mobile-menu');
+        const icon = document.getElementById('menu-icon');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+            if (menu.classList.contains('hidden')) {
+                icon.className = "fa-solid fa-bars text-xl";
+            } else {
+                icon.className = "fa-solid fa-xmark text-xl";
+            }
+        });
+
+        // ПЛАВНАЯ ПРОКРУТКА
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+
+                if (targetElement) {
+                    if (!menu.classList.contains('hidden')) {
+                        menu.classList.add('hidden');
+                        icon.className = "fa-solid fa-bars text-xl";
+                    }
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // ОТПРАВКА ФОРМЫ (Google Sheets Apps Script)
+        const form = document.getElementById('school-feedback-form');
+        const successAlert = document.getElementById('form-success');
+        const errorAlert = document.getElementById('form-error');
+        const submitBtn = document.getElementById('submit-btn');
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Вставьте ваш скопированный Google Web App URL внутри кавычек:
+            const scriptURL = ''; 
+
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<span><i class="fa-solid fa-spinner animate-spin"></i> Отправка данных...</span>';
+
+            successAlert.classList.add('hidden');
+            errorAlert.classList.add('hidden');
+
+            const formData = new FormData(form);
+            const dataObject = {};
+            formData.forEach((value, key) => { dataObject[key] = value; });
+
+            if (scriptURL === '') {
+                // Имитация успешной отправки, если скрипт еще не настроен
+                setTimeout(() => {
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = '<span><i class="fa-regular fa-paper-plane text-schoolGold"></i> Отправить обращение</span>';
+                    successAlert.classList.remove('hidden');
+                    form.reset();
+                    successAlert.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }, 1500);
+            } else {
+                // Настоящий запрос в Google Sheets
+                fetch(scriptURL, { 
+                    method: 'POST', 
+                    body: JSON.stringify(dataObject),
+                    headers: { 'Content-Type': 'text/plain;charset=utf-8' }
+                })
+                .then(response => {
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = '<span><i class="fa-regular fa-paper-plane text-schoolGold"></i> Отправить обращение</span>';
+                    successAlert.classList.remove('hidden');
+                    form.reset();
+                    successAlert.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                })
+                .catch(error => {
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = '<span><i class="fa-regular fa-paper-plane text-schoolGold"></i> Отправить обращение</span>';
+                    errorAlert.classList.remove('hidden');
+                    errorAlert.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    console.error('Ошибка!', error.message);
+                });
+            }
+        });
+
+        // СТАРТ ИНИЦИАЛИЗАЦИИ
+        window.addEventListener('DOMContentLoaded', () => {
+            renderClassButtons();
+            renderScheduleTable();
+            renderServices();
+        });
+    </script>
+</body>
+</html>
