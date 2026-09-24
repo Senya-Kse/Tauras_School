@@ -18,7 +18,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="Таурас">
-    <link class="rounded-lg" rel="apple-touch-icon" href="logo.jpg">
+    <link class="rounded-lg" rel="apple-touch-icon" href="logo.png">
     
     <script>
         tailwind.config = {
@@ -87,7 +87,7 @@
     <main class="flex-grow overflow-hidden relative">
 
         <!-- 1. ЭКРАН: ГЛАВНАЯ (HOME) -->
-        <div id="screen-home" class="app-screen active h-full w-full overflow-y-auto px-4 py-4 space-y-4 no-scrollbar">
+        <div id="screen-home" class="app-screen h-full w-full overflow-y-auto px-4 py-4 space-y-4 no-scrollbar">
             <!-- Приветственный баннер с Маскотом -->
             <div class="bg-gradient-to-br from-schoolDarkBlue to-schoolBlue rounded-2xl p-4 text-white border-b-4 border-schoolGold relative overflow-hidden shadow">
                 <div class="relative z-10 pr-20">
@@ -95,7 +95,7 @@
                     <h3 class="font-serif text-lg font-bold mt-1.5 leading-tight">Частная школа <span class="text-schoolGold">«Таурас»</span></h3>
                     <p class="text-xs text-slate-200 mt-1 font-light">Вся школьная информация в твоем кармане!</p>
                 </div>
-                <img src="mascot.jpg" alt="Mascot" onerror="this.src='https://placehold.co/100x100?text=Бык'" class="absolute right-2 bottom-0 w-24 object-contain">
+                <img src="mascot.png" alt="Mascot" onerror="this.src='https://placehold.co/100x100?text=Бык'" class="absolute right-2 bottom-0 w-24 object-contain">
             </div>
 
             <!-- Предстоящие Мероприятия (Лента) -->
@@ -199,7 +199,7 @@
         </div>
 
         <!-- 2. ЭКРАН: РАСПИСАНИЕ (SCHEDULE) -->
-        <div id="screen-schedule" class="app-screen h-full w-full overflow-hidden flex flex-col p-4">
+        <div id="screen-schedule" class="app-screen h-full w-full overflow-hidden flex flex-col p-4 hidden">
             <!-- Выбор класса -->
             <div class="shrink-0 mb-3">
                 <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block mb-1">Выбери класс:</span>
@@ -237,7 +237,7 @@
         </div>
 
         <!-- 3. ЭКРАН: УСЛУГИ (SERVICES) -->
-        <div id="screen-services" class="app-screen h-full w-full overflow-hidden flex flex-col p-4">
+        <div id="screen-services" class="app-screen h-full w-full overflow-hidden flex flex-col p-4 hidden">
             <h4 class="text-xs font-bold uppercase tracking-wider text-schoolDarkBlue mb-2.5 shrink-0">Дополнительные занятия «Созвездие»</h4>
             
             <!-- Контейнер карточек с прокруткой -->
@@ -247,7 +247,7 @@
         </div>
 
         <!-- 4. ЭКРАН: ОБРАТНАЯ СВЯЗЬ (FEEDBACK) -->
-        <div id="screen-feedback" class="app-screen h-full w-full overflow-y-auto px-4 py-4 space-y-4 no-scrollbar">
+        <div id="screen-feedback" class="app-screen h-full w-full overflow-y-auto px-4 py-4 space-y-4 no-scrollbar hidden">
             <!-- Заголовок формы -->
             <div class="bg-white rounded-xl border border-slate-200 p-4 shadow-sm text-center">
                 <h4 class="font-serif font-bold text-sm text-schoolDarkBlue">ФОРМА СВЯЗИ С АДМИНИСТРАЦИЕЙ</h4>
@@ -525,19 +525,19 @@
 
         // НАВИГАЦИЯ МЕЖДУ ЭКРАНАМИ (SPA)
         function navigate(screenId) {
-            // Скрыть все экраны
+            // Скрыть все экраны (добавляем класс hidden)
             document.querySelectorAll('.app-screen').forEach(scr => {
-                scr.classList.remove('active');
+                scr.classList.add('hidden');
             });
             // Сбросить активные классы в Bottom Bar
             document.querySelectorAll('.nav-btn').forEach(btn => {
                 btn.className = "nav-btn flex-1 py-3.5 flex flex-col items-center gap-1 text-slate-400 hover:text-white transition-colors";
             });
 
-            // Показать выбранный экран
+            // Показать выбранный экран (удаляем класс hidden)
             const targetScreen = document.getElementById(`screen-${screenId}`);
             if(targetScreen) {
-                targetScreen.classList.add('active');
+                targetScreen.classList.remove('hidden');
             }
 
             // Выделить кнопку в Bottom Bar
@@ -619,7 +619,7 @@
             const container = document.getElementById('app-services-container');
             container.innerHTML = '';
 
-            appServicesData.forEach(cat => {
+            appServicesData.forEach((cat, catIdx) => {
                 const catWrapper = document.createElement('div');
                 catWrapper.className = "space-y-2";
 
@@ -633,11 +633,11 @@
                         <i class="fa-solid ${cat.icon} text-xs ${headerColor}"></i>
                         <h5 class="text-xs font-bold text-schoolDarkBlue uppercase tracking-wide font-serif">${cat.category}</h5>
                     </div>
-                    <div class="space-y-2" id="app-grid-${cat.category.replace(/ /g, '_')}"></div>
+                    <div class="space-y-2" id="app-grid-${catIdx}"></div>
                 `;
                 container.appendChild(catWrapper);
 
-                const grid = document.getElementById(`app-grid-${cat.category.replace(/ /g, '_')}`);
+                const grid = document.getElementById(`app-grid-${catIdx}`);
                 cat.items.forEach(item => {
                     const card = document.createElement('div');
                     card.className = "bg-white rounded-xl border border-slate-200 p-3 shadow-sm flex items-center justify-between gap-4";
@@ -674,7 +674,7 @@
         form.addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // Вставьте вашу скопированную ссылку на Google Apps Script Web App здесь:
+            // Вставьте вашу ссылку на Google Скрипт (веб-приложение) внутри одиночных кавычек:
             const scriptURL = ''; 
 
             submitBtn.disabled = true;
