@@ -41,7 +41,6 @@
     <style>
         body {
             -webkit-tap-highlight-color: transparent;
-            user-select: none;
             overscroll-behavior-y: contain;
         }
         /* Спрятать скроллбары для чистого App-вида */
@@ -65,12 +64,12 @@
         }
     </style>
 </head>
-<body class="bg-slate-100 font-sans text-slate-800 flex flex-col h-screen overflow-hidden select-none">
+<body class="bg-slate-100 font-sans text-slate-800 flex flex-col h-screen overflow-hidden">
 
     <!-- ФИКСИРОВАННЫЙ HEADER ПРИЛОЖЕНИЯ -->
     <header class="bg-schoolDarkBlue border-b border-schoolGold/30 text-white px-4 pt-4 pb-3 flex items-center justify-between shadow-md shrink-0">
         <div class="flex items-center gap-2.5">
-            <img src="logo.png" alt="Герб" onerror="this.src='https://placehold.co/100x100?text=Герб'" class="w-10 h-10 rounded-lg border border-schoolGold bg-white p-0.5 object-contain">
+            <img src="logo.png" alt="Герб" class="w-10 h-10 rounded-lg border border-schoolGold bg-white p-0.5 object-contain">
             <div>
                 <h1 class="font-serif font-bold text-sm tracking-wide leading-tight">ТАУРАС</h1>
                 <p class="text-[10px] text-schoolGold font-medium">Школьное приложение</p>
@@ -79,7 +78,7 @@
         <!-- Индикатор статуса сети/маскот аватарка -->
         <div class="flex items-center gap-2">
             <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-            <img src="mascot.png" alt="Бык" onerror="this.src='https://placehold.co/100x100?text=Бык'" class="w-8 h-8 rounded-full border border-schoolGold/50 object-cover bg-white">
+            <img src="mascot.png" alt="Бык" class="w-8 h-8 rounded-full border border-schoolGold/50 object-cover bg-white">
         </div>
     </header>
 
@@ -89,13 +88,15 @@
         <!-- 1. ЭКРАН: ГЛАВНАЯ (HOME) -->
         <div id="screen-home" class="app-screen h-full w-full overflow-y-auto px-4 py-4 space-y-4 no-scrollbar">
             <!-- Приветственный баннер с Маскотом -->
-            <div class="bg-gradient-to-br from-schoolDarkBlue to-schoolBlue rounded-2xl p-4 text-white border-b-4 border-schoolGold relative overflow-hidden shadow">
-                <div class="relative z-10 pr-20">
+            <div class="bg-gradient-to-br from-schoolDarkBlue to-schoolBlue rounded-2xl p-4 text-white border-b-4 border-schoolGold shadow flex items-center justify-between gap-4">
+                <div class="flex-grow">
                     <span class="text-[9px] uppercase bg-schoolGold/20 text-schoolGold font-bold px-2 py-0.5 rounded border border-schoolGold/30">Добро пожаловать</span>
                     <h3 class="font-serif text-lg font-bold mt-1.5 leading-tight">Частная школа <span class="text-schoolGold">«Таурас»</span></h3>
-                    <p class="text-xs text-slate-200 mt-1 font-light">Вся школьная информация в твоем кармане!</p>
+                    <p class="text-xs text-slate-200 mt-1.5 font-light leading-snug">Вся школьная информация в твоем кармане!</p>
                 </div>
-                <img src="mascot.png" alt="Mascot" onerror="this.src='https://placehold.co/100x100?text=Бык'" class="absolute right-2 bottom-0 w-24 object-contain">
+                <div class="shrink-0">
+                    <img src="mascot.png" alt="Бык" class="w-16 h-16 rounded-xl border border-schoolGold/40 object-cover bg-white/10 shadow-md">
+                </div>
             </div>
 
             <!-- Предстоящие Мероприятия (Лента) -->
@@ -211,11 +212,11 @@
             <!-- Выбор дня недели -->
             <div class="shrink-0 mb-3">
                 <div class="flex justify-between gap-1" id="app-day-selector">
-                    <button onclick="appSwitchDay('ПН')" id="app-day-ПН" class="app-day-btn flex-1 py-1.5 rounded-lg text-xs font-bold uppercase text-center bg-schoolBlue text-white shadow-sm">ПН</button>
-                    <button onclick="appSwitchDay('ВТ')" id="app-day-ВТ" class="app-day-btn flex-1 py-1.5 rounded-lg text-xs font-bold uppercase text-center bg-white text-slate-500 border border-slate-200">ВТ</button>
-                    <button onclick="appSwitchDay('СР')" id="app-day-СР" class="app-day-btn flex-1 py-1.5 rounded-lg text-xs font-bold uppercase text-center bg-white text-slate-500 border border-slate-200">СР</button>
-                    <button onclick="appSwitchDay('ЧТ')" id="app-day-ЧТ" class="app-day-btn flex-1 py-1.5 rounded-lg text-xs font-bold uppercase text-center bg-white text-slate-500 border border-slate-200">ЧТ</button>
-                    <button onclick="appSwitchDay('ПТ')" id="app-day-ПТ" class="app-day-btn flex-1 py-1.5 rounded-lg text-xs font-bold uppercase text-center bg-white text-slate-500 border border-slate-200">ПТ</button>
+                    <button type="button" onclick="appSwitchDay('ПН')" id="app-day-ПН" class="app-day-btn flex-1 py-1.5 rounded-lg text-xs font-bold uppercase text-center bg-schoolBlue text-white shadow-sm">ПН</button>
+                    <button type="button" onclick="appSwitchDay('ВТ')" id="app-day-ВТ" class="app-day-btn flex-1 py-1.5 rounded-lg text-xs font-bold uppercase text-center bg-white text-slate-500 border border-slate-200">ВТ</button>
+                    <button type="button" onclick="appSwitchDay('СР')" id="app-day-СР" class="app-day-btn flex-1 py-1.5 rounded-lg text-xs font-bold uppercase text-center bg-white text-slate-500 border border-slate-200">СР</button>
+                    <button type="button" onclick="appSwitchDay('ЧТ')" id="app-day-ЧТ" class="app-day-btn flex-1 py-1.5 rounded-lg text-xs font-bold uppercase text-center bg-white text-slate-500 border border-slate-200">ЧТ</button>
+                    <button type="button" onclick="appSwitchDay('ПТ')" id="app-day-ПТ" class="app-day-btn flex-1 py-1.5 rounded-lg text-xs font-bold uppercase text-center bg-white text-slate-500 border border-slate-200">ПТ</button>
                 </div>
             </div>
 
@@ -307,22 +308,22 @@
     <!-- ФИКСИРОВАННЫЙ BOTTOM NAV BAR ПРИЛОЖЕНИЯ -->
     <nav class="bg-schoolDarkBlue border-t border-schoolGold/30 text-white flex justify-around items-center shrink-0 shadow-2xl relative z-20 pb-[env(safe-area-inset-bottom)]">
         <!-- Кнопка Главная -->
-        <button onclick="navigate('home')" id="nav-home" class="nav-btn flex-1 py-3.5 flex flex-col items-center gap-1 text-schoolGold transition-colors">
+        <button type="button" onclick="navigate('home')" id="nav-home" class="nav-btn flex-1 py-3.5 flex flex-col items-center gap-1 text-schoolGold transition-colors">
             <i class="fa-solid fa-house-chimney text-lg"></i>
             <span class="text-[10px] font-bold">Главная</span>
         </button>
         <!-- Кнопка Расписание -->
-        <button onclick="navigate('schedule')" id="nav-schedule" class="nav-btn flex-1 py-3.5 flex flex-col items-center gap-1 text-slate-400 hover:text-white transition-colors">
+        <button type="button" onclick="navigate('schedule')" id="nav-schedule" class="nav-btn flex-1 py-3.5 flex flex-col items-center gap-1 text-slate-400 hover:text-white transition-colors">
             <i class="fa-regular fa-calendar-days text-lg"></i>
             <span class="text-[10px] font-bold">Уроки</span>
         </button>
         <!-- Кнопка Услуги -->
-        <button onclick="navigate('services')" id="nav-services" class="nav-btn flex-1 py-3.5 flex flex-col items-center gap-1 text-slate-400 hover:text-white transition-colors">
+        <button type="button" onclick="navigate('services')" id="nav-services" class="nav-btn flex-1 py-3.5 flex flex-col items-center gap-1 text-slate-400 hover:text-white transition-colors">
             <i class="fa-solid fa-star-of-david text-lg"></i>
             <span class="text-[10px] font-bold">Секции</span>
         </button>
         <!-- Кнопка Обратная связь -->
-        <button onclick="navigate('feedback')" id="nav-feedback" class="nav-btn flex-1 py-3.5 flex flex-col items-center gap-1 text-slate-400 hover:text-white transition-colors">
+        <button type="button" onclick="navigate('feedback')" id="nav-feedback" class="nav-btn flex-1 py-3.5 flex flex-col items-center gap-1 text-slate-400 hover:text-white transition-colors">
             <i class="fa-solid fa-paper-plane text-lg"></i>
             <span class="text-[10px] font-bold">Связь</span>
         </button>
@@ -528,6 +529,7 @@
             // Скрыть все экраны (добавляем класс hidden)
             document.querySelectorAll('.app-screen').forEach(scr => {
                 scr.classList.add('hidden');
+                scr.classList.remove('active');
             });
             // Сбросить активные классы в Bottom Bar
             document.querySelectorAll('.nav-btn').forEach(btn => {
@@ -538,6 +540,7 @@
             const targetScreen = document.getElementById(`screen-${screenId}`);
             if(targetScreen) {
                 targetScreen.classList.remove('hidden');
+                targetScreen.classList.add('active');
             }
 
             // Выделить кнопку в Bottom Bar
@@ -550,9 +553,11 @@
         // КНОПКИ КЛАССОВ (ЭКРАН РАСПИСАНИЯ)
         function buildAppClassSelector() {
             const container = document.getElementById('app-class-selector');
+            if(!container) return;
             container.innerHTML = '';
             Object.keys(appScheduleData).forEach(cls => {
                 const btn = document.createElement('button');
+                btn.type = "button";
                 btn.id = `app-class-btn-${cls}`;
                 btn.className = cls === curClass
                     ? "px-4 py-1.5 rounded-full text-xs font-bold shrink-0 bg-schoolGold text-schoolDarkBlue border border-schoolGold/50 shadow-sm"
@@ -592,6 +597,7 @@
 
         function buildAppScheduleTable() {
             const tbody = document.getElementById('app-schedule-table-body');
+            if(!tbody) return;
             tbody.innerHTML = '';
 
             const data = appScheduleData[curClass];
@@ -614,46 +620,48 @@
             });
         }
 
-        // СТРОИТЕЛЬ КАРТОЧЕК ДОП. ОБРАЗОВАНИЯ
+        // СТРОИТЕЛЬ КАРТОЧЕК ДОП. ОБРАЗОВАНИЯ (Надежная сборка строкой)
         function buildAppServices() {
             const container = document.getElementById('app-services-container');
-            container.innerHTML = '';
-
+            if(!container) return;
+            
+            let htmlString = '';
             appServicesData.forEach((cat, catIdx) => {
-                const catWrapper = document.createElement('div');
-                catWrapper.className = "space-y-2";
-
                 let headerColor = "text-schoolBlue";
                 if(cat.color === 'emerald') headerColor = "text-emerald-600";
                 if(cat.color === 'rose') headerColor = "text-rose-600";
                 if(cat.color === 'orange') headerColor = "text-orange-600";
 
-                catWrapper.innerHTML = `
-                    <div class="flex items-center gap-2 border-b border-slate-200 pb-1.5 mt-2 shrink-0">
-                        <i class="fa-solid ${cat.icon} text-xs ${headerColor}"></i>
-                        <h5 class="text-xs font-bold text-schoolDarkBlue uppercase tracking-wide font-serif">${cat.category}</h5>
-                    </div>
-                    <div class="space-y-2" id="app-grid-${catIdx}"></div>
-                `;
-                container.appendChild(catWrapper);
-
-                const grid = document.getElementById(`app-grid-${catIdx}`);
+                let itemsHtml = '';
                 cat.items.forEach(item => {
-                    const card = document.createElement('div');
-                    card.className = "bg-white rounded-xl border border-slate-200 p-3 shadow-sm flex items-center justify-between gap-4";
-                    card.innerHTML = `
-                        <div class="flex-grow">
-                            <h6 class="font-bold text-xs text-slate-800 leading-tight">${item.name}</h6>
-                            <p class="text-[10px] text-slate-400 mt-1"><i class="fa-regular fa-clock text-schoolGold mr-1"></i>${item.schedule}</p>
-                        </div>
-                        <div class="text-right shrink-0 flex flex-col items-end gap-1.5">
-                            <span class="text-xs font-extrabold text-schoolBlue block">${item.price}</span>
-                            <button onclick="appSelectService('${item.name}')" class="px-3 py-1 bg-schoolBlue hover:bg-schoolDarkBlue text-white rounded-lg text-[10px] font-bold shadow-sm transition-all">Записать</button>
+                    itemsHtml += `
+                        <div class="bg-white rounded-xl border border-slate-200 p-3 shadow-sm flex items-center justify-between gap-4">
+                            <div class="flex-grow">
+                                <h6 class="font-bold text-xs text-slate-800 leading-tight">${item.name}</h6>
+                                <p class="text-[10px] text-slate-400 mt-1"><i class="fa-regular fa-clock text-schoolGold mr-1"></i>${item.schedule}</p>
+                            </div>
+                            <div class="text-right shrink-0 flex flex-col items-end gap-1.5">
+                                <span class="text-xs font-extrabold text-schoolBlue block">${item.price}</span>
+                                <button type="button" onclick="appSelectService('${item.name}')" class="px-3 py-1 bg-schoolBlue hover:bg-schoolDarkBlue text-white rounded-lg text-[10px] font-bold shadow-sm transition-all">Записать</button>
+                            </div>
                         </div>
                     `;
-                    grid.appendChild(card);
                 });
+
+                htmlString += `
+                    <div class="space-y-2">
+                        <div class="flex items-center gap-2 border-b border-slate-200 pb-1.5 mt-2 shrink-0">
+                            <i class="fa-solid ${cat.icon} text-xs ${headerColor}"></i>
+                            <h5 class="text-xs font-bold text-schoolDarkBlue uppercase tracking-wide font-serif">${cat.category}</h5>
+                        </div>
+                        <div class="space-y-2">
+                            ${itemsHtml}
+                        </div>
+                    </div>
+                `;
             });
+
+            container.innerHTML = htmlString;
         }
 
         function appSelectService(name) {
@@ -671,53 +679,55 @@
         const success = document.getElementById('app-form-success');
         const submitBtn = document.getElementById('app-submit-btn');
 
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Вставьте вашу ссылку на Google Скрипт (веб-приложение) внутри одиночных кавычек:
-            const scriptURL = ''; 
+        if (form) {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Вставьте вашу ссылку на Google Скрипт (веб-приложение) внутри одиночных кавычек:
+                const scriptURL = ''; 
 
-            submitBtn.disabled = true;
-            submitBtn.innerHTML = '<i class="fa-solid fa-spinner animate-spin"></i> Отправка данных...';
-            success.classList.add('hidden');
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = '<i class="fa-solid fa-spinner animate-spin"></i> Отправка данных...';
+                success.classList.add('hidden');
 
-            const data = {
-                name: document.getElementById('app-name').value,
-                phone: document.getElementById('app-phone').value,
-                email: document.getElementById('app-email').value,
-                class: document.getElementById('app-class-select').value,
-                service: document.getElementById('app-service-interest').value,
-                message: document.getElementById('app-message').value
-            };
+                const data = {
+                    name: document.getElementById('app-name').value,
+                    phone: document.getElementById('app-phone').value,
+                    email: document.getElementById('app-email').value,
+                    class: document.getElementById('app-class-select').value,
+                    service: document.getElementById('app-service-interest').value,
+                    message: document.getElementById('app-message').value
+                };
 
-            if(scriptURL === '') {
-                setTimeout(() => {
-                    submitBtn.disabled = false;
-                    submitBtn.innerHTML = '<i class="fa-regular fa-paper-plane text-schoolGold"></i> Отправить обращение';
-                    success.classList.remove('hidden');
-                    form.reset();
-                    success.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                }, 1200);
-            } else {
-                fetch(scriptURL, {
-                    method: 'POST',
-                    body: JSON.stringify(data),
-                    headers: { 'Content-Type': 'text/plain;charset=utf-8' }
-                })
-                .then(res => {
-                    submitBtn.disabled = false;
-                    submitBtn.innerHTML = '<i class="fa-regular fa-paper-plane text-schoolGold"></i> Отправить обращение';
-                    success.classList.remove('hidden');
-                    form.reset();
-                    success.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                })
-                .catch(err => {
-                    submitBtn.disabled = false;
-                    submitBtn.innerHTML = '<i class="fa-regular fa-paper-plane text-schoolGold"></i> Отправить обращение';
-                    alert("Ошибка отправки! Убедитесь в правильности URL-адреса скрипта.");
-                });
-            }
-        });
+                if(scriptURL === '') {
+                    setTimeout(() => {
+                        submitBtn.disabled = false;
+                        submitBtn.innerHTML = '<i class="fa-regular fa-paper-plane text-schoolGold"></i> Отправить обращение';
+                        success.classList.remove('hidden');
+                        form.reset();
+                        success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }, 1200);
+                } else {
+                    fetch(scriptURL, {
+                        method: 'POST',
+                        body: JSON.stringify(data),
+                        headers: { 'Content-Type': 'text/plain;charset=utf-8' }
+                    })
+                    .then(res => {
+                        submitBtn.disabled = false;
+                        submitBtn.innerHTML = '<i class="fa-regular fa-paper-plane text-schoolGold"></i> Отправить обращение';
+                        success.classList.remove('hidden');
+                        form.reset();
+                        success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    })
+                    .catch(err => {
+                        submitBtn.disabled = false;
+                        submitBtn.innerHTML = '<i class="fa-regular fa-paper-plane text-schoolGold"></i> Отправить обращение';
+                        alert("Ошибка отправки! Убедитесь в правильности URL-адреса скрипта.");
+                    });
+                }
+            });
+        }
 
         // СТАРТ
         window.addEventListener('DOMContentLoaded', () => {
@@ -735,3 +745,5 @@
     </script>
 </body>
 </html>
+"""
+}
